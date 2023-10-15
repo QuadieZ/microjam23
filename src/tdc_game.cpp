@@ -1,6 +1,7 @@
 #include "tdc_game.h"
 
 #include "bn_keypad.h"
+#include "bn_sound_items.h"
 
 #include "mj/mj_game_list.h"
 
@@ -48,6 +49,7 @@ mj::game_result tdc_game::play(const mj::game_data& data)
         if(bn::keypad::any_pressed())
         {
             _bg2.set_item(bn::regular_bg_items::tdc_you_lose);
+            bn::sound_items::tdc_lose.play_with_priority(10);
             result.remove_title = true;
             _defeat = true;
         }
@@ -77,17 +79,18 @@ void tdc_game::credits(mj::credits_type type, bn::ivector<bn::string_view>& outp
     {
 
     case mj::credits_type::CODE:
-        output.push_back("GValiente");
+        output.push_back("quadiez");
         break;
 
     case mj::credits_type::GRAPHICS:
-        output.push_back("GValiente");
+        output.push_back("quadiez");
         break;
 
     case mj::credits_type::MUSIC:
         break;
 
     case mj::credits_type::SOUND_EFFECTS:
+        output.push_back("nexwaller");
         break;
 
     default:
